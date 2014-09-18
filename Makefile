@@ -1,13 +1,10 @@
-CC = gcc
-
+CC=gcc
 CFLAGS=-Wall -g
+OBJ=ex1.o ex3.o ex4.o ex5.o ex6.o
 
-TARGET = ex1 ex3
-
-all: $(patsubst %.c, %.exe, $(wildcard *.c))
-
-%.exe: %.c Makefile
-	$(CC) $< -o $@
-
+%.o: %.c
+	$(CC) -c -o $@ $< $(CFLAGS)
+all: $(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS)
 clean:
-	$(RM) $(TARGET)
+	rm -f ex1 ex3 ex4 ex5 ex6
